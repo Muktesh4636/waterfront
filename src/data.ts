@@ -15,8 +15,11 @@ export const MAP = {
 } as const;
 
 export const IMAGES = {
-  hero: "/images/entrance-cgi-hd.jpg",
+  hero: "/images/hero-clear.png",
+  /** Portrait-friendly dusk elevation for phones */
+  heroMobile: "/images/hero-clear.png",
   entrance: "/images/entrance-cgi-hd.jpg",
+  overview: "/images/overview-main.jpg",
   dusk: "/images/elev-dusk-hd.jpg",
   day: "/images/elev-day-hd.jpg",
   exter: "/images/exter-hd.jpg",
@@ -64,7 +67,7 @@ export const LIFESTYLE = [
   {
     title: "Arrive in style",
     line: "A grand entrance that sets the tone.",
-    image: IMAGES.entrance,
+    image: IMAGES.overview,
   },
   {
     title: "Live in light",

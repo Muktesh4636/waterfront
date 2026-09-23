@@ -61,11 +61,13 @@ export function Overview() {
         <FadeIn>
           <div className="overview-visual" ref={visualRef}>
             <motion.img
-              src={IMAGES.entrance}
-              alt="Fortune Waterfront grand entrance"
+              src={IMAGES.overview}
+              alt="Fortune Waterfront exterior"
               style={{ y: imgY, scale: 1.1 }}
             />
-            <p className="overview-caption">Opposite IDL Lake · Kukatpally</p>
+            <p className="overview-caption">
+              Opposite IDL Lake · Kukatpally
+            </p>
           </div>
         </FadeIn>
 
