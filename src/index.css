@@ -364,10 +364,12 @@ h4 {
 
 .hero-brand-logo {
   display: block;
-  width: min(88vw, 34rem);
+  width: min(92vw, 38rem);
   height: auto;
-  max-height: none;
-  filter: drop-shadow(0 2px 24px color-mix(in srgb, var(--ink) 40%, transparent));
+  max-height: min(42vh, 22rem);
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 2px 28px color-mix(in srgb, var(--ink) 55%, transparent));
 }
 
 .hero-lead {
@@ -714,6 +716,201 @@ h4 {
   background: linear-gradient(transparent, color-mix(in srgb, var(--ink) 70%, transparent));
   font-size: 0.8rem;
   letter-spacing: 0.06em;
+}
+
+/* —— Interiors / 3D room view —— */
+.interiors {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in srgb, var(--lake) 18%, transparent), transparent),
+    var(--foam);
+  overflow-x: clip;
+}
+
+.room-tour-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 2rem;
+}
+
+.room-tour-tab {
+  font-family: var(--font-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+}
+
+.room-tour-tab:hover {
+  color: var(--ink);
+}
+
+.room-tour-tab.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--bronze);
+}
+
+.room-tour-stage {
+  margin-top: 1.75rem;
+  position: relative;
+}
+
+.room-view3d {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: min(72vh, 720px);
+  background: var(--ink);
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+
+.room-view3d:active {
+  cursor: grabbing;
+}
+
+.room-view3d-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.room-view3d-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-accent);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--white) 88%, transparent);
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
+  padding: 0.55rem 1rem;
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease-out);
+  white-space: nowrap;
+}
+
+.room-view3d-hint.is-hidden {
+  opacity: 0;
+}
+
+.room-view3d-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 0.85rem 1rem 1rem;
+  background: linear-gradient(
+    transparent,
+    color-mix(in srgb, var(--ink) 78%, transparent) 35%,
+    color-mix(in srgb, var(--ink) 88%, transparent)
+  );
+  pointer-events: none;
+}
+
+.room-view3d-controls-label {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--white) 55%, transparent);
+  margin-bottom: 0.45rem;
+}
+
+.room-view3d-positions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  pointer-events: auto;
+}
+
+.room-view3d-pos {
+  font-family: var(--font-accent);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--white) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--white) 22%, transparent);
+  padding: 0.45rem 0.7rem;
+  background: color-mix(in srgb, var(--ink) 35%, transparent);
+  transition:
+    color 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out),
+    background 0.3s var(--ease-out);
+}
+
+.room-view3d-pos:hover {
+  color: var(--white);
+  border-color: color-mix(in srgb, var(--bronze) 70%, transparent);
+}
+
+.room-view3d-pos.is-active {
+  color: var(--ink);
+  background: var(--bronze-light);
+  border-color: var(--bronze-light);
+}
+
+.room-view3d-keys {
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--white) 48%, transparent);
+}
+
+.room-view3d-hint {
+  bottom: 5.75rem;
+}
+
+@media (max-width: 700px) {
+  .room-view3d-hint {
+    bottom: 6.5rem;
+  }
+
+  .room-view3d-keys {
+    display: none;
+  }
+}
+
+.room-tour-caption {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1.25rem;
+}
+
+.room-tour-caption h3 {
+  font-size: 1.35rem;
+  color: var(--ink);
+}
+
+.room-tour-caption p {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+@media (max-width: 700px) {
+  .room-view3d {
+    aspect-ratio: 4 / 5;
+    max-height: min(70vh, 560px);
+  }
+
+  .room-view3d-hint {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    white-space: normal;
+    text-align: center;
+    max-width: calc(100% - 2rem);
+  }
 }
 
 /* —— Amenities —— */
@@ -1256,6 +1453,14 @@ h4 {
   object-fit: contain;
   object-position: left center;
   margin-bottom: 1rem;
+}
+
+.footer-project-logo {
+  display: block;
+  width: min(100%, 12.5rem);
+  height: auto;
+  margin-bottom: 1rem;
+  opacity: 0.95;
 }
 
 .footer-brand {

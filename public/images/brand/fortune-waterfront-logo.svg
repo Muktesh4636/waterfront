@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" fill="none" role="img" aria-label="Fortune Waterfront  3 BHK Apartments">
+  <!-- FORTUNE: condensed sans, top-right over ATER -->
+  <text
+    x="392"
+    y="78"
+    fill="#fff"
+    font-family="Arial Narrow, Helvetica Neue Condensed, Impact, sans-serif"
+    font-size="42"
+    font-weight="700"
+    letter-spacing="6"
+  >FORTUNE</text>
+
+  <!-- WATER: high-contrast serif, oversized W -->
+  <text
+    x="48"
+    y="200"
+    fill="#fff"
+    font-family="Didot, Bodoni MT, Playfair Display, Georgia, serif"
+    font-size="128"
+    font-weight="700"
+    letter-spacing="2"
+  ><tspan font-size="168" dy="-8">W</tspan><tspan dy="8">ATER</tspan></text>
+
+  <!-- Waves left of FRONT -->
+  <g stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M52 268 C90 252, 130 252, 168 268"/>
+    <path d="M52 286 C95 270, 135 270, 178 286"/>
+    <path d="M52 304 C100 288, 140 288, 188 304"/>
+  </g>
+
+  <!-- FRONT -->
+  <text
+    x="210"
+    y="320"
+    fill="#fff"
+    font-family="Didot, Bodoni MT, Playfair Display, Georgia, serif"
+    font-size="118"
+    font-weight="700"
+    letter-spacing="4"
+  >FRONT</text>
+
+  <!-- 3 BHK APARTMENTS -->
+  <text
+    x="360"
+    y="390"
+    fill="#fff"
+    font-family="Helvetica Neue, Arial, sans-serif"
+    font-size="28"
+    font-weight="500"
+    letter-spacing="10"
+    text-anchor="middle"
+  >3 BHK APARTMENTS</text>
+</svg>

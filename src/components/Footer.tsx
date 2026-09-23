@@ -12,7 +12,14 @@ export function Footer() {
               height={46}
               decoding="async"
             />
-            <p className="footer-brand">Fortune Waterfront</p>
+            <img
+              className="footer-project-logo"
+              src="/images/brand/fortune-waterfront-logo.png?v=3"
+              alt="Fortune Waterfront"
+              width={280}
+              height={138}
+              decoding="async"
+            />
             <p>Where the lake meets home — by Sri Sreenivasa Infra.</p>
             <p className="footer-rera">TS RERA NO: P02200009419</p>
           </div>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Living room · 360° from the middle</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #0b1f2a;
+        font-family: Georgia, "Times New Roman", serif;
+        overflow: hidden;
+      }
+      #view {
+        position: fixed;
+        inset: 0;
+        cursor: grab;
+        touch-action: none;
+      }
+      #view:active {
+        cursor: grabbing;
+      }
+      #hint {
+        position: fixed;
+        left: 50%;
+        bottom: 1.5rem;
+        transform: translateX(-50%);
+        z-index: 2;
+        margin: 0;
+        padding: 0.6rem 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        background: rgba(11, 31, 42, 0.55);
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+        text-align: center;
+      }
+      #hint.hide {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="view" aria-label="Living room 360 view"></div>
+    <p id="hint">Drag to look around · you are in the middle of the room</p>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from "three";
+
+      const host = document.getElementById("view");
+      const hint = document.getElementById("hint");
+      // One file: full living room around you
+      const PANO = "../images/rooms/living-360.webp";
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0b1f2a);
+
+      const camera = new THREE.PerspectiveCamera(78, 1, 0.1, 2000);
+      camera.position.set(0, 0, 0);
+      camera.rotation.order = "YXZ";
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      host.appendChild(renderer.domElement);
+
+      const geo = new THREE.SphereGeometry(500, 64, 48);
+      geo.scale(-1, 1, 1);
+      const mat = new THREE.MeshBasicMaterial({ color: 0x1a3340 });
+      scene.add(new THREE.Mesh(geo, mat));
+
+      new THREE.TextureLoader().load(PANO, (tex) => {
+        tex.colorSpace = THREE.SRGBColorSpace;
+        mat.map = tex;
+        mat.color.set(0xffffff);
+        mat.needsUpdate = true;
+      });
+
+      let yaw = 0;
+      let pitch = 0;
+      let ty = 0;
+      let tp = 0;
+      let drag = false;
+      let lx = 0;
+      let ly = 0;
+      const pitchMax = THREE.MathUtils.degToRad(72);
+
+      const look = (y, p) => {
+        ty = y;
+        tp = THREE.MathUtils.clamp(p, -pitchMax, pitchMax);
+      };
+
+      host.addEventListener("pointerdown", (e) => {
+        drag = true;
+        lx = e.clientX;
+        ly = e.clientY;
+        host.setPointerCapture(e.pointerId);
+        hint.classList.add("hide");
+      });
+      host.addEventListener("pointermove", (e) => {
+        if (!drag) return;
+        look(ty - (e.clientX - lx) * 0.0042, tp - (e.clientY - ly) * 0.0034);
+        lx = e.clientX;
+        ly = e.clientY;
+      });
+      const end = (e) => {
+        drag = false;
+        try {
+          host.releasePointerCapture(e.pointerId);
+        } catch {}
+      };
+      host.addEventListener("pointerup", end);
+      host.addEventListener("pointercancel", end);
+      host.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault();
+          hint.classList.add("hide");
+          look(ty - e.deltaX * 0.0016, tp - e.deltaY * 0.0016);
+        },
+        { passive: false },
+      );
+
+      const resize = () => {
+        const w = host.clientWidth;
+        const h = host.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h, false);
+      };
+      addEventListener("resize", resize);
+      resize();
+
+      const tick = () => {
+        requestAnimationFrame(tick);
+        yaw += (ty - yaw) * 0.14;
+        pitch += (tp - pitch) * 0.14;
+        camera.rotation.y = yaw;
+        camera.rotation.x = pitch;
+        renderer.render(scene, camera);
+      };
+      tick();
+    </script>
+  </body>
+</html>

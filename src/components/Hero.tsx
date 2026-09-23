@@ -36,10 +36,10 @@ export function Hero() {
         >
           <img
             className="hero-brand-logo"
-            src="/images/brand/fortune-waterfront-logo.png"
-            alt="Fortune Waterfront"
-            width={560}
-            height={276}
+            src="/images/brand/fortune-waterfront-logo.png?v=3"
+            alt="Fortune Waterfront — 3 BHK Apartments"
+            width={640}
+            height={370}
             decoding="async"
             fetchPriority="high"
           />

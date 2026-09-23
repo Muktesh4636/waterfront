@@ -4,6 +4,7 @@ import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { Overview } from "./components/Overview";
 import { Residences } from "./components/Residences";
+import { Interiors } from "./components/Interiors";
 import { Amenities } from "./components/Amenities";
 import { Plans } from "./components/Plans";
 import { Videos } from "./components/Videos";
@@ -49,6 +50,7 @@ function App() {
         <Hero />
         <Overview />
         <Residences />
+        <Interiors />
         <Amenities />
         <Plans />
         <Videos />

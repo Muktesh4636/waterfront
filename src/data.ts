@@ -30,6 +30,8 @@ export const IMAGES = {
   exterA: "/images/exter-a-hd.jpg",
   elev: "/images/elev-hd.jpg",
   living: "/images/living.webp",
+  /** Center-of-room CGI for the 3D look-around */
+  living3d: "/images/living-3d.webp",
   bedroom: "/images/bedroom.webp",
   pool: "/images/pool.webp",
   club: "/images/club.webp",
@@ -105,6 +107,40 @@ export const GALLERY = [
   { src: IMAGES.central, caption: "Central greens" },
 ] as const;
 
+/** One 360° file — stand in the middle and see the whole living room. */
+export const LIVING_ROOM_360 = "/images/rooms/living-360.webp";
+
+/** Four wall views from the center of the living room (cube-map). */
+export const LIVING_ROOM_FACES = {
+  front: "/images/rooms/living/front.webp",
+  back: "/images/rooms/living/back.webp",
+  left: "/images/rooms/living/left.webp",
+  right: "/images/rooms/living/right.webp",
+} as const;
+
+/** Flat CGI interiors shown as a center-of-room 3D look-around. */
+export const ROOM_TOURS = [
+  {
+    id: "bedroom",
+    title: "Master bedroom",
+    line: "Quiet light, green walls, lake balcony beyond.",
+    src: IMAGES.bedroom,
+  },
+  {
+    id: "living",
+    title: "Living room",
+    line: "One 360° view — turn and see the whole room from the middle.",
+    panorama: LIVING_ROOM_360,
+    src: IMAGES.living3d,
+  },
+  {
+    id: "dining",
+    title: "Dining",
+    line: "Gather under soft light, steps from the view.",
+    src: IMAGES.dining,
+  },
+] as const;
+
 export const PROXIMITY = [
   { title: "By the lake", detail: "Opposite IDL Lake" },
   { title: "Near metro", detail: "Minutes to Kukatpally Metro" },
@@ -163,6 +199,7 @@ export const PROGRESS = {
 export const NAV_LINKS = [
   { href: "#overview", label: "Overview" },
   { href: "#lifestyle", label: "Lifestyle" },
+  { href: "#interiors", label: "Interiors" },
   { href: "#amenities", label: "Amenities" },
   { href: "#plans", label: "Plans" },
   { href: "#videos", label: "Videos" },
