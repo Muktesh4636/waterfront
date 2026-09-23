@@ -4,6 +4,14 @@ export function Footer() {
       <div className="container">
         <div className="footer-top">
           <div>
+            <img
+              className="footer-logo"
+              src="/images/brand/ssi-company-logo.png"
+              alt="Sri Sreenivasa Infra"
+              width={280}
+              height={46}
+              decoding="async"
+            />
             <p className="footer-brand">Fortune Waterfront</p>
             <p>Where the lake meets home — by Sri Sreenivasa Infra.</p>
             <p className="footer-rera">TS RERA NO: P02200009419</p>

@@ -72,8 +72,7 @@ export function Residences() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <img src={item.src} alt={item.caption} loading="lazy" />
-              <figcaption>{item.caption}</figcaption>
+              <img src={item.src} alt="" loading="lazy" />
             </motion.figure>
           ))}
         </div>

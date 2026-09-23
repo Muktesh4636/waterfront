@@ -1,6 +1,10 @@
 export const WHATSAPP =
   "https://wa.me/918790009000?text=Hi%2C%20I%27m%20interested%20in%20Fortune%20Waterfront";
 
+export function whatsappLink(message: string) {
+  return `https://wa.me/918790009000?text=${encodeURIComponent(message)}`;
+}
+
 export const MAP = {
   lat: 17.47861,
   lng: 78.41484,
@@ -62,22 +66,22 @@ export const LIFESTYLE = [
   {
     title: "Wake to water",
     line: "Mornings shaped by the lake breeze.",
-    image: IMAGES.dusk,
+    image: "/images/lifestyle/wake.jpg",
   },
   {
     title: "Arrive in style",
     line: "A grand entrance that sets the tone.",
-    image: IMAGES.overview,
+    image: "/images/lifestyle/arrive.jpg",
   },
   {
     title: "Live in light",
     line: "Interiors designed to breathe.",
-    image: IMAGES.living,
+    image: "/images/lifestyle/live.jpg",
   },
   {
     title: "Rest deeply",
     line: "Quiet bedrooms above the city hum.",
-    image: IMAGES.bedroom,
+    image: "/images/lifestyle/rest.jpg",
   },
 ] as const;
 
@@ -110,15 +114,15 @@ export const PROXIMITY = [
 
 export const VIDEOS = [
   {
+    id: "STgPutTW8Cw",
+    title: "Project walkthrough",
+    tagline: "Experience Fortune Waterfront",
+  },
+  {
     id: "R_lI9lJLZ5M",
     title: "Location & review 2026",
     tagline: "SSI Fortune Waterfront walkthrough",
     start: 6,
-  },
-  {
-    id: "STgPutTW8Cw",
-    title: "Project walkthrough",
-    tagline: "Experience Fortune Waterfront",
   },
   {
     id: "63fBdkL5-VM",
@@ -160,7 +164,63 @@ export const NAV_LINKS = [
   { href: "#overview", label: "Overview" },
   { href: "#lifestyle", label: "Lifestyle" },
   { href: "#amenities", label: "Amenities" },
+  { href: "#plans", label: "Plans" },
   { href: "#videos", label: "Videos" },
   { href: "#progress", label: "Progress" },
   { href: "#location", label: "Location" },
+  { href: "#faqs", label: "FAQs" },
+] as const;
+
+export const PLANS = [
+  {
+    title: "Master plan",
+    line: "The full site — towers, greens, and the lake approach.",
+    image: "/images/plans/master-plan.jpg",
+    href: whatsappLink(
+      "Hi, I'd like the Fortune Waterfront master plan. Please share details.",
+    ),
+  },
+  {
+    title: "Floor plan — Block A",
+    line: "Typical floors · 3 BHK homes.",
+    image: "/images/plans/floor-plan-a.jpg",
+    href: whatsappLink(
+      "Hi, I'd like the Fortune Waterfront Block A floor plan. Please share details.",
+    ),
+  },
+  {
+    title: "Floor plan — Block B",
+    line: "Typical floors · 3 BHK homes.",
+    image: "/images/plans/floor-plan-b.jpg",
+    href: whatsappLink(
+      "Hi, I'd like the Fortune Waterfront Block B floor plan. Please share details.",
+    ),
+  },
+] as const;
+
+export const FAQS = [
+  {
+    q: "Where is Fortune Waterfront located?",
+    a: "Opposite IDL Lake in Kukatpally, Hyderabad — a calm waterfront setting with strong city connectivity.",
+  },
+  {
+    q: "What kind of homes are offered?",
+    a: "Exclusive 3 BHK residences across two towers, designed for light, privacy, and everyday comfort.",
+  },
+  {
+    q: "Is it a gated community?",
+    a: "Yes. Fortune Waterfront is a gated community with private lobbies, landscaped greens, and controlled access.",
+  },
+  {
+    q: "What amenities can residents enjoy?",
+    a: "A temperature-controlled pool, clubhouse, fitness studio, yoga lawn, zen garden, children's play, and more — all within the community.",
+  },
+  {
+    q: "How do I get floor plans or schedule a visit?",
+    a: "Everything happens on WhatsApp. Tap any plan on this site or chat with us — we'll share details and arrange a site visit.",
+  },
+  {
+    q: "Who is the developer?",
+    a: "Sri Sreenivasa Infra. RERA: TS RERA NO P02200009419.",
+  },
 ] as const;

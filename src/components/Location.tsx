@@ -21,12 +21,12 @@ export function Location() {
   const mapY = useTransform(
     scrollYProgress,
     [0, 1],
-    reduce ? [0, 0] : [40, -40],
+    reduce ? [0, 0] : [24, -24],
   );
   const mapScale = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    reduce ? [1, 1, 1] : [1.06, 1.02, 1.06],
+    reduce ? [1, 1, 1] : [1.02, 1, 1.02],
   );
 
   return (

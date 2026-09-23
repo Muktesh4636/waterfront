@@ -26,9 +26,20 @@ export function Nav() {
     <>
       <header className={`nav${scrolled || open ? " scrolled" : ""}`}>
         <div className="nav-inner">
-          <a href="#top" className="nav-brand" onClick={close}>
-            Fortune Waterfront
-            <span>Sri Sreenivasa Infra</span>
+          <a
+            href="#top"
+            className="nav-brand"
+            aria-label="Sri Sreenivasa Infra — Fortune Waterfront"
+            onClick={close}
+          >
+            <img
+              className="nav-logo"
+              src="/images/brand/ssi-company-logo.png"
+              alt="Sri Sreenivasa Infra"
+              width={220}
+              height={36}
+              decoding="async"
+            />
           </a>
 
           <nav className="nav-links" aria-label="Primary">
@@ -38,15 +49,6 @@ export function Nav() {
               </a>
             ))}
           </nav>
-
-          <a
-            className="nav-cta"
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
-          >
-            WhatsApp
-          </a>
 
           <button
             type="button"
